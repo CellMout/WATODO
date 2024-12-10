@@ -24,25 +24,31 @@ end
 
 #seeds requests
 requests = []
-5.times do
-  requests << Request.create!(
-    user: users.sample,
-    duration: rand(1..10),
-    lat: Faker::Address.latitude,
-    lon: Faker::Address.longitude,
-    options: Faker::Lorem.words(number: 3).join(", "),
-    category: Faker::Hobby.activity
-  )
+users.each do |user|
+  3.times do
+    lat = Faker::Address.latitude
+    lon = Faker::Address.longitude
+    requests << Request.create!(
+      user: user,
+      duration: rand(5..240),
+      lat: lat,
+      lon: lon,
+      options: Faker::Lorem.words(number: 3).join(", "),
+      category: Faker::Hobby.activity
+    )
+  end
 end
 
 #seeds activities
-5.times do
-  Activity.create!(
-    name: Faker::Lorem.sentence(word_count: 3),
-    description: Faker::Lorem.paragraph(sentence_count: 2),
-    location: Faker::Address.city,
-    request: requests.sample
-  )
+requests.each do |request|
+  5.times do
+    Activity.create!(
+      name: Faker::Lorem.sentence(word_count: 3),
+      description: Faker::Lorem.paragraph(sentence_count: 2),
+      location: Faker::Address.city,
+      request: request
+    )
+  end
 end
 
 puts "Created #{User.count} users, #{Request.count} requests, and #{Activity.count} activities."
