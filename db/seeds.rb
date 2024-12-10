@@ -7,3 +7,48 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Activity.delete_all
+Request.delete_all
+User.delete_all
+
+#seeds users
+User.create(email: "admin@gmail.com", password: "password")
+
+users = []
+2.times do
+  users << User.create!(
+  email: Faker::Internet.unique.email,
+  password: Faker::Internet.password(min_length: 8)
+  )
+end
+
+#seeds requests
+requests = []
+users.each do |user|
+  3.times do
+    lat = Faker::Address.latitude
+    lon = Faker::Address.longitude
+    requests << Request.create!(
+      user: user,
+      duration: rand(5..240),
+      lat: lat,
+      lon: lon,
+      options: Faker::Lorem.words(number: 3).join(", "),
+      category: Faker::Hobby.activity
+    )
+  end
+end
+
+#seeds activities
+requests.each do |request|
+  5.times do
+    Activity.create!(
+      name: Faker::Lorem.sentence(word_count: 3),
+      description: Faker::Lorem.paragraph(sentence_count: 2),
+      location: Faker::Address.city,
+      request: request
+    )
+  end
+end
+
+puts "Created #{User.count} users, #{Request.count} requests, and #{Activity.count} activities."
