@@ -52,6 +52,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "ruby-openai"
 gem "geocoder"
+gem "json"
 
 group :development, :test do
   gem "dotenv-rails"
