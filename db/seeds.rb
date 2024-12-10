@@ -7,12 +7,18 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
 Activity.delete_all
-Request.delete_all
-User.delete_all
+Request.destroy_all
+User.destroy_all
+
+admin = User.create!(email: "admin@gmail.com", password: "password")
+testreq = Request.new(duration: 60, lat: 43.298569, lon: 5.372766)
+testreq.user = admin
+testreq.save!
 
 #seeds users
-User.create(email: "admin@gmail.com", password: "password")
 
 users = []
 2.times do
