@@ -135,6 +135,8 @@ GEM
       tzinfo
     event_stream_parser (1.0.0)
     execjs (2.10.0)
+    faker (3.5.1)
+      i18n (>= 1.8.11, < 2)
     faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -143,8 +145,6 @@ GEM
       multipart-post (~> 2)
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
-    faker (3.5.1)
-      i18n (>= 1.8.11, < 2)
     ffi (1.17.0-aarch64-linux-gnu)
     ffi (1.17.0-aarch64-linux-musl)
     ffi (1.17.0-arm-linux-gnu)
@@ -447,6 +447,7 @@ DEPENDENCIES
   geocoder
   importmap-rails
   jbuilder
+  json
   kamal
   pg (~> 1.1)
   propshaft
