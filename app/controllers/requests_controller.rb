@@ -5,7 +5,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(duration: (params[:request][:hours].to_i * 60 + params[:request][:minutes].to_i), lat: 43.298569, lon: 5.372766)   # changer avec strong params + localisation
+    @request = Request.new(duration: (params[:request][:hours].to_i * 60 + params[:request][:minutes].to_i), lat: params[:request][:latitude], lon: params[:request][:longitude])   # changer avec strong params + localisation
     @request.user = current_user
     if @request.save!
       @request.create_activities
@@ -37,6 +37,6 @@ class RequestsController < ApplicationController
 
 
   def request_params
-    params.require(:request).permit(:hours, :minutes)
+    params.require(:request).permit(:hours, :minutes, :latitude, :longitude)
   end
 end
