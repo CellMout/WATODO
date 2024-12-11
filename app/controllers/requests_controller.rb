@@ -5,11 +5,13 @@ class RequestsController < ApplicationController
   end
 
   def create
-  @request = Request.new(params[:request])
-    if @request.save
-      redirect_to @request
+    @request = Request.new(duration: (params[:request][:hours].to_i * 60 + params[:request][:minutes].to_i), lat: 43.298569, lon: 5.372766)   # changer avec strong params + localisation
+    @request.user = current_user
+    if @request.save!
+      @request.create_activities
+      redirect_to request_path(@request)
     else
-      render :new
+      render :new, status: :unprocessable_entity, alert: "G PAS KOMPRI"
     end
   end
 
@@ -27,6 +29,6 @@ class RequestsController < ApplicationController
 
 
   def request_params
-    params.require(:request).permit(:user_id, :duration, :lat, :lon, :options, :category)
+    params.require(:request).permit(:hours, :minutes)
   end
 end

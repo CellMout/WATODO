@@ -447,6 +447,7 @@ DEPENDENCIES
   geocoder
   importmap-rails
   jbuilder
+  json
   kamal
   pg (~> 1.1)
   propshaft
