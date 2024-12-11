@@ -8,6 +8,7 @@ class RequestsController < ApplicationController
     @request = Request.new(duration: (params[:request][:hours].to_i * 60 + params[:request][:minutes].to_i), lat: 43.298569, lon: 5.372766)   # changer avec strong params + localisation
     @request.user = current_user
     if @request.save!
+      @request.create_activities
       redirect_to request_path(@request)
     else
       render :new, status: :unprocessable_entity, alert: "G PAS KOMPRI"
