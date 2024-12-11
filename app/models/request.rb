@@ -12,6 +12,11 @@ class Request < ApplicationRecord
     end
   end
 
+
+  def postion
+    result = request.safe_location
+  end
+
   private
 
   def response
