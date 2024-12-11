@@ -1,22 +1,23 @@
+<div class="container pt-5">
+  for <%= @request.duration %> min:
 
-for <%= @request.duration %> min:
-
-<% @request.activities.each do |activity|%>
-  <h2>
-    <%= activity.name %>
-  </h2>
-  <p>
-    <b>Description :</b>  <%= activity.description %>
-  </p>
-  <p>
-    <b>Address :</b> <%= activity.location %>
-  </p>
+  <% @request.activities.each do |activity|%>
+    <h2>
+      <%= activity.name %>
+    </h2>
+    <p>
+      <b>Description :</b>  <%= activity.description %>
+    </p>
+    <p>
+      <b>Address :</b> <%= activity.location %>
+    </p>
 
 
 
-<% end %>
+  <% end %>
 
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>
