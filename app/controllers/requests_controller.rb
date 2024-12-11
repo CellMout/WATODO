@@ -5,7 +5,8 @@ class RequestsController < ApplicationController
   end
 
   def create
-  @request = Request.new(params[:request])
+    @request = Request.new(request_params)
+    @request.user = current_user
     if @request.save
       redirect_to @request
     else
