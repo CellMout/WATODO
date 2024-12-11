@@ -1,1 +1,17 @@
 
+for <%= @request.duration %> min:
+
+<% @request.activities.each do |activity|%>
+  <h2>
+    <%= activity.name %>
+  </h2>
+  <p>
+    <b>Description :</b>  <%= activity.description %>
+  </p>
+  <p>
+    <b>Address :</b> <%= activity.location %>
+  </p>
+
+
+
+<% end %>
