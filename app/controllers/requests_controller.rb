@@ -16,7 +16,15 @@ class RequestsController < ApplicationController
   end
 
   def show
+    @markers = Array.new(5)
     @request = Request.find(params[:id])
+    @markers = @request.activities do |activity|
+      {
+        lat: activity.longitude,
+        lng: activity.latitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { activity: activity })
+      }
+    end
   end
 
   def edit
