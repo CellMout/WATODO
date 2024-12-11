@@ -1,4 +1,3 @@
-
 <div class="banner-watodo" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= image_path("8ce5289c-75da-4b14-9c63-2a623d1cdaef.webp") %>');">
   <div class="container">
     <div class="title-container">
@@ -17,7 +16,7 @@
   </div>
 
   <div class="form-overlay">
-    <%= form_with(model: @request, url: requests_path, html: { class: "form-inline" }) do |form| %>
+    <%= form_with model: @request, url: requests_path, html: { class: "form-inline" }, data: { controller: "user-coordinates"} do |form| %>
       <div class="search-button">
         <%= form.submit "Search", class: "btn btn-search" %>
       </div>
@@ -26,6 +25,8 @@
         <span>:</span>
         <%= form.number_field :minutes, step: 1, min: 0, max: 59, placeholder: "minutes...", class: "form-control time-field" %>
       </div>
+      <%= form.hidden_field :latitude, data: { user_coordinates_target: "latitude" } %>
+      <%= form.hidden_field :longitude, data: {user_coordinates_target: "longitude" } %>
     <% end %>
   </div>
 </div>
