@@ -9,7 +9,7 @@
       <b>Description :</b>  <%= activity.description %>
     </p>
     <p>
-      <b>Address :</b> <%= activity.location %>
+      <%= link_to "Do it!", "https://www.google.com/maps/dir/?api=1&destination=#{activity.gmaps_params}&travelmode=walking", class: "custom-btn"%>
     </p>
 
 
