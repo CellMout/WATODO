@@ -3,6 +3,7 @@ class Request < ApplicationRecord
   has_many :activities
 
   validates :duration, :lat, :lon, presence: true
+  validates :duration, numericality: { only_integer: true, greater_than: 0 }
 
   def create_activities
     response["activities"].each do |activity|
