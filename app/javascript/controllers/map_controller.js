@@ -24,9 +24,9 @@ export default class extends Controller {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       const el = document.createElement('div')
       el.className = 'marker'
-      /* if (marker.type === 'user') {
+      if (marker.type === 'user') {
         el.className += 'marker-user'
-    } */
+      }
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)

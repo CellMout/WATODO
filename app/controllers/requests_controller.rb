@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @markers = []
+    # @markers = []
     @request = Request.find(params[:id])
     @markers = @request.activities.map do |activity|
       {
