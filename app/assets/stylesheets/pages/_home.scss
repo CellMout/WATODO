@@ -2,7 +2,6 @@
 
 .banner-watodo {
   background-position: center;
-
   text-align: center;
   display: flex;
   height: 100vh;
@@ -73,6 +72,9 @@
   height: 150px;
   font-size: 2rem;
   font-weight: bold;
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 15px;
 }
 
 .animated-title {
