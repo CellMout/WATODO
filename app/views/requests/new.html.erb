@@ -1,8 +1,14 @@
 <div class="banner-watodo"  style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= image_path("8ce5289c-75da-4b14-9c63-2a623d1cdaef.jpg") %>');">
 <div class="navbar-custom">
+<% if user_signed_in? %>
   <%= link_to profile_path class: "profile-link" do %>
     <i class="fa-solid fa-user profile-icon"></i>
   <% end %>
+<% else %>
+  <%= link_to new_user_session_path, class: "profile-link" do %>
+    <i class="fa-solid fa-user profile-icon"></i>
+  <% end %>
+<% end %>
 </div>
   <div class="container container-home">
     <div class="title-container">
