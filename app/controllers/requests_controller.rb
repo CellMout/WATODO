@@ -15,13 +15,24 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @markers = Array.new(5)
+    @markers = []
     @request = Request.find(params[:id])
-    @markers = @request.activities do |activity|
+    @markers = @request.activities.map do |activity|
       {
-        lat: activity.longitude,
-        lng: activity.latitude,
-        info_window_html: render_to_string(partial: "info_window", locals: { activity: activity })
+        lat: activity.latitude,
+        lng: activity.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { activity: activity }),
+        type: "activity"
+      }
+    end
+    @request.user = current_user
+    @user_location = Request.find_by(user_id: current_user.id)
+    if @user_location
+      @markers << {
+        lat: @user_location.lat,
+        lng: @user_location.lon,
+        info_window_html: render_to_string(partial: "info_window", locals: { activity: Activity.first }),
+        type: "user"
       }
     end
   end
