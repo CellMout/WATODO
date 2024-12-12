@@ -8,10 +8,10 @@
     <p>
       <b>Description :</b>  <%= activity.description %>
     </p>
-    <p>
-      <%= link_to "Do it!", "https://www.google.com/maps/dir/?api=1&destination=#{activity.gmaps_params}&travelmode=walking", class: "custom-btn"%>
+    <p data-controller="doitbutton" data-doitbutton-gmaps-value=<%= activity.gmaps_params %> >
+      <%= link_to "Do it!", activity_path(activity), data: { 'turbo-method': :patch, action: "doitbutton#send", doitbutton_target: "link" }, class: "custom-btn"%>
     </p>
-
+<%# , "https://www.google.com/maps/dir/?api=1&destination=#{activity.gmaps_params}&travelmode=walking" %>
 
 
   <% end %>
