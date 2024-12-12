@@ -1,4 +1,9 @@
 <div class="banner-watodo"  style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= image_path("8ce5289c-75da-4b14-9c63-2a623d1cdaef.jpg") %>');">
+<div class="navbar-custom">
+  <%= link_to profile_path class: "profile-link" do %>
+    <i class="fa-solid fa-user profile-icon"></i>
+  <% end %>
+</div>
   <div class="container container-home">
     <div class="title-container">
     <h1 class="animated-title">
@@ -9,21 +14,25 @@
     <span>D</span>
     <span>O</span>
   </h1>
-    <h2 class="mt-5">Discover</h2>
-     <h3> your surroundings</h3>
+    <h2 class="slogan mt-5">
+      <p>Discover</p>
+      <p>your surroundings</p>
+    </h2>
     </div>
   </div>
 
   <div class="form-overlay">
     <%= form_with model: @request, url: requests_path, html: { class: "form-inline" }, data: { controller: "user-coordinates"} do |form| %>
-      <div class="search-button">
-        <%= form.submit "Search", class: "btn btn-search" %>
+    <div class="my-block" style="display:flex; flex-direction: column; padding: 0px 10px;">
+      <%= form.submit "Search", class: "btn-search" %>
+      <div class="form-main">
+        <div class="time-inputs">
+          <%= form.number_field :hours, step: 1, min: 0, placeholder: "hours...", class: "form-control time-field" %>
+          <span>:</span>
+          <%= form.number_field :minutes, step: 1, min: 0, max: 59, placeholder: "minutes...", class: "form-control time-field" %>
+        </div>
       </div>
-      <div class="time-inputs">
-        <%= form.number_field :hours, step: 1, min: 0, placeholder: "hours...", class: "form-control time-field" %>
-        <span>:</span>
-        <%= form.number_field :minutes, step: 1, min: 0, max: 59, placeholder: "minutes...", class: "form-control time-field" %>
-      </div>
+    </div>
       <%= form.hidden_field :latitude, data: { user_coordinates_target: "latitude" } %>
       <%= form.hidden_field :longitude, data: {user_coordinates_target: "longitude" } %>
     <% end %>
