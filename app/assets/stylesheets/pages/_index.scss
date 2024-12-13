@@ -1,2 +1,27 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.container {
+background-color: $cinq;
+}
+.card {
+  background-color: $zero;
+  border-radius: 20px;
+}
+.card-title {
+  font-size: 24px;
+  font-weight: bold
+
+}
+.subcard {
+  background-color: $un;
+  border-radius: 20px;
+  padding: 10px;
+}
+.cardtext {
+  background-color: $un;
+}
+.card .btn {
+  font-size: 8px;
+
+}
