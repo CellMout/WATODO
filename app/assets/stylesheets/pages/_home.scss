@@ -85,8 +85,10 @@
 }
 
 .animated-title {
-  display: inline-block;
+  display: flex;
   overflow: hidden;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 
