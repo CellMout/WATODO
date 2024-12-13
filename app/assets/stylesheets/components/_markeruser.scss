@@ -1,8 +1,11 @@
 .markeruser {
-  background-color: blue;
-  background-size: cover;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  cursor: pointer;
+  .marker {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    border: 2px solid #FFF;
+    border-radius: 50% 50% 50% 0;
+    position: relative;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+  }
 }
