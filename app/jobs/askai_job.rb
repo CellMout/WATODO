@@ -1,10 +1,8 @@
 class AskaiJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(request)
     # Do something later
-    puts "asking AI to do something"
-    sleep 5
-    puts "job done!"
+    request.create_activities
   end
 end
