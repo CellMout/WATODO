@@ -14,12 +14,16 @@
             </p>
 
             <p data-controller="doitbutton" data-doitbutton-gmaps-value=<%= activity.gmaps_params %> >
-      <%= link_to "Do it!", activity_path(activity), data: { 'turbo-method': :patch, action: "doitbutton#send", doitbutton_target: "link" }, class: "custom-btn"%>
-    </p>
+              <%= link_to "Do it!", activity_path(activity), data: { 'turbo-method': :patch, action: "doitbutton#send", doitbutton_target: "link" }, class: "custom-btn"%>
+            </p>
+         </div>
+       </div>
+     <% end %>
+   </div>
 
-          </div>
-        </div>
-      </div>
-    <% end %>
+   <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
