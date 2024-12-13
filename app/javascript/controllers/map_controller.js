@@ -21,6 +21,7 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       console.log(marker.lat, marker.lng, marker)
+      
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       const el = document.createElement('div')
       el.className = 'marker'
