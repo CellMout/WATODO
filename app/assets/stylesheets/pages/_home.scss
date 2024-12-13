@@ -7,7 +7,7 @@
   height: 100vh;
 }
 .title-container {
- padding: 200px 0px;
+ padding-top: 10vh;
  margin: auto;
 }
 
@@ -73,8 +73,8 @@
   box-shadow: 0px 0px 10px 5px $zero;
   color: white;
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width:  35vw;
+  height: 35vw;
   font-size: 2rem;
   font-weight: bold;
   float: right;
@@ -85,8 +85,10 @@
 }
 
 .animated-title {
-  display: inline-block;
+  display: flex;
   overflow: hidden;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 
