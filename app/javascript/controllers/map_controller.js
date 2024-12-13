@@ -25,7 +25,7 @@ export default class extends Controller {
       const el = document.createElement('div')
       el.className = 'marker'
       if (marker.type === 'user') {
-        el.className += 'marker-user'
+        el.className += 'markeruser'
       }
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
