@@ -1,23 +1,4 @@
 // Import page-specific CSS files here.
 @import "home";
-
-.container-purple {
-background-color: $cinq;
-}
-.card-custom {
-  display: flex;
-  background-color: $zero;
-  border-radius: 20px;
-  border: $cinq;
-  margin-top: 10px;
-
-}
-.card-title {
-  font-size: 24px;
-  font-weight: bold;
-  border-bottom: solid 3px $un;
-}
-.map {
-  border-radius: 20px;
-  margin-top: 10px;
-}
+@import "show";
+@import "profile";
