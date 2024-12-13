@@ -1,8 +1,10 @@
 .marker {
-  background-color: red;
-  background-size: cover;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: $quatre;
+  border: 2px solid #FFF;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-30deg);
+  position: absolute;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
 }

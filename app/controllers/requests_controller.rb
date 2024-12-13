@@ -25,12 +25,11 @@ class RequestsController < ApplicationController
         type: "activity"
       }
     end
-    @request.user = current_user
-    @user_location = Request.find_by(user_id: current_user.id)
-    if @user_location
+    
+    if @request
       @markers << {
-        lat: @user_location.lat,
-        lng: @user_location.lon,
+        lat: @request.lat,
+        lng: @request.lon,
         info_window_html: render_to_string(partial: "info_window", locals: { activity: Activity.first }),
         type: "user"
       }

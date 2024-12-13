@@ -22,16 +22,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_13_140552) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "done", default: false
-    t.float "latitude"
-    t.float "longitude"
+    t.decimal "latitude", precision: 9, scale: 7
+    t.decimal "longitude", precision: 9, scale: 7
     t.index ["request_id"], name: "index_activities_on_request_id"
   end
 
   create_table "requests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "duration"
-    t.float "lat"
-    t.float "lon"
+    t.decimal "lat", precision: 9, scale: 7
+    t.decimal "lon", precision: 9, scale: 7
     t.string "options"
     t.string "category"
     t.datetime "created_at", null: false
