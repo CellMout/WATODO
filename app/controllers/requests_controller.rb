@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
       @request.create_activities
       redirect_to request_path(@request)
     else
-      render :new, status: :unprocessable_entity, alert: "G PAS KOMPRI"
+      render :new, status: :unprocessable_entity, alert: "Can't process your request"
     end
   end
 
