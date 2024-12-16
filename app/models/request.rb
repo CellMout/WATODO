@@ -7,7 +7,9 @@ class Request < ApplicationRecord
 
   def create_activities
     response["activities"].each do |activity|
-      acti = Activity.new(name: activity["title"], description: activity["description"], location: activity["location"])
+      loc = activity["location"] if activity["location"].split(",").count == 3
+      loc = activity["location"].split(",").drop(1) if activity["location"].split(",").count == 4
+      acti = Activity.new(name: activity["title"], description: activity["description"], location: loc)
       acti.request = self
       acti.save!
     end
