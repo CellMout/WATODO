@@ -1,0 +1,17 @@
+<div class="col">
+  <div class="card-custom shadow-sm h-100 " >
+    <div class="card-body d-flex flex-column justify-content-between p-3 ">
+
+
+        <h2 class="card-title "><%= activity.name %></h2>
+
+        <p class="card-text mb-2">
+          <%= activity.description %>
+        </p>
+
+      <p data-controller="doitbutton" data-doitbutton-gmaps-value=<%= activity.gmaps_params %> class="d-flex justify-content-end mt-2 mb-0">
+        <%= link_to "Do it!", activity_path(activity), data: { 'turbo-method': :patch, action: "doitbutton#send", doitbutton_target: "link" }, class: "custom-btn"%>
+      </p>
+    </div>
+  </div>
+</div>
