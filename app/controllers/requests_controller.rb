@@ -25,7 +25,6 @@ class RequestsController < ApplicationController
         type: "activity"
       }
     end
-    
     if @request
       @markers << {
         lat: @request.lat,
