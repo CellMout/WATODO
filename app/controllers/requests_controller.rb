@@ -25,10 +25,11 @@ class RequestsController < ApplicationController
         type: "activity"
       }
     end
+
     if @request
       @markers << {
         lat: @request.lat,
-        lng: @request.lon,
+        lon: @request.lon,
         info_window_html: render_to_string(partial: "info_window", locals: { activity: Activity.first }),
         type: "user"
       }
