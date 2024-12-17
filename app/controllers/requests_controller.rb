@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
     @request = Request.new(duration: (params[:request][:hours].to_i * 60 + params[:request][:minutes].to_i), lat: params[:request][:latitude], lon: params[:request][:longitude])   # changer avec strong params + localisation
     @request.user = current_user
     if @request.save!
-      AskaiJob.perform_later(@request)
+      AskaiJob.perform_now(@request)
       redirect_to request_path(@request)
     else
       render :new, status: :unprocessable_entity, alert: "Error: can't process your request"

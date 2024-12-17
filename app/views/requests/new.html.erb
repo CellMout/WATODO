@@ -1,15 +1,15 @@
-<div class="banner-watodo"  style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= image_path("8ce5289c-75da-4b14-9c63-2a623d1cdaef.jpg") %>');">
-<div class="navbar-custom">
-<% if user_signed_in? %>
-  <%= link_to profile_path class: "profile-link" do %>
-    <i class="fa-solid fa-user profile-icon"></i>
-  <% end %>
-<% else %>
-  <%= link_to new_user_session_path, class: "profile-link" do %>
-    <i class="fa-solid fa-user profile-icon"></i>
-  <% end %>
-<% end %>
-</div>
+<div class="banner-watodo"  data-controller="loading" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= image_path("8ce5289c-75da-4b14-9c63-2a623d1cdaef.jpg") %>');">
+  <div class="navbar-custom d-flex justify-content-between">
+    <% if user_signed_in? %>
+      <%= link_to profile_path class: "profile-link" do %>
+        <i class="fa-solid fa-user profile-icon"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "profile-link" do %>
+        <i class="fa-solid fa-user profile-icon"></i>
+      <% end %>
+    <% end %>
+  </div>
   <div class="container container-home">
       <div class="title-container">
       <h1 class="animated-title">
@@ -25,12 +25,13 @@
         <p>your surroundings</p>
       </h2>
     </div>
+    <img class="d-none" data-loading-target="loading" src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif" alt="" style="width: 100px; height: 100px; margin-top: 7vh;">
   </div>
 
   <div class="form-overlay">
     <%= form_with model: @request, url: requests_path, html: { class: "form-inline" }, data: { controller: "user-coordinates"} do |form| %>
     <div class="my-block" style="display:flex; flex-direction: column; padding: 0px 10px;">
-      <%= form.submit "Search", class: "btn-search" %>
+      <%= form.submit "Search", class: "btn-search", data: { action: "click->loading#loading"} %>
       <div class="form-main">
         <div class="time-inputs">
           <%= form.number_field :hours, step: 1, min: 0, placeholder: "hours...", class: "form-control time-field" %>

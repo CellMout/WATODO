@@ -4,6 +4,9 @@ class Request < ApplicationRecord
   validates :duration, :lat, :lon, presence: true
   validates :duration, numericality: { only_integer: true, greater_than: 0 }
 
+  reverse_geocoded_by :lat, :lon
+  after_validation :reverse_geocode
+
   def create_activities
     response["activities"].each do |activity|
       loc = activity["location"] if activity["location"].split(",").count == 3
@@ -18,10 +21,6 @@ class Request < ApplicationRecord
      hours = duration / 60
      minutes = (duration % 60).to_s.rjust(2, "0")
      "#{hours}h #{minutes} min to kill at:"
-  end
-
-  def address
-    Geocoder.address([ lat, lon ])
   end
 
   # def postion
