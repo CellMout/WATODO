@@ -8,5 +8,6 @@
 //= link controllers/map_controller.js
 //= link controllers/user_coordinates_controller.js
 //= link controllers/doitbutton_controller.js
+//= link controllers/loading_controller.js
 //= link application.css
 //= link controllers/scrolling_controller.js

@@ -25,7 +25,7 @@ export default class extends Controller {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       const el = document.createElement('div')
       el.className = 'marker'
-      
+
       console.log(marker.type, marker)
       console.log(marker.type === 'user')
 
