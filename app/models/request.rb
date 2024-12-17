@@ -15,10 +15,19 @@ class Request < ApplicationRecord
     end
   end
 
-
-  def postion
-    result = request.safe_location
+  def format_duration
+     hours = duration / 60
+     minutes = (duration % 60).to_s.rjust(2, "0")
+     "#{hours}h #{minutes} min to kill at:"
   end
+
+  def address
+    Geocoder.address([ lat, lon ])
+  end
+
+  # def postion
+  #   result = request.safe_location
+  # end
 
   private
 
