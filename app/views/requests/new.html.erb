@@ -31,7 +31,7 @@
   <div class="form-overlay">
     <%= form_with model: @request, url: requests_path, html: { class: "form-inline" }, data: { controller: "user-coordinates"} do |form| %>
     <div class="my-block" style="display:flex; flex-direction: column; padding: 0px 10px;">
-      <%= form.submit "Search", class: "btn-search", data: { action: "click->loading#loading"} %>
+      <%= form.submit "Search", class: "btn-search d-flex justify-content-center align-items-center", data: { action: "click->loading#loading"} %>
       <div class="form-main">
         <div class="time-inputs">
           <%= form.number_field :hours, step: 1, min: 0, placeholder: "hours...", class: "form-control time-field" %>

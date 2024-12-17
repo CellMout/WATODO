@@ -14,6 +14,7 @@ Request.destroy_all
 User.destroy_all
 
 admin = User.create!(email: "admin@gmail.com", password: "password")
+default_user = User.create!(email: "default.user@watodo.bug", password: "0w91F3/;yg8N")
 # testreq = Request.new(duration: 60, lat: 43.298569, lon: 5.372766)
 # testreq.user = admin
 # testreq.save!

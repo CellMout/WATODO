@@ -4,8 +4,13 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(duration: (params[:request][:hours].to_i * 60 + params[:request][:minutes].to_i), lat: params[:request][:latitude], lon: params[:request][:longitude])   # changer avec strong params + localisation
-    @request.user = current_user
+    @request = Request.new(duration: (params[:request][:hours].to_i * 60 + params[:request][:minutes].to_i), lat: params[:request][:latitude], lon: params[:request][:longitude])
+    if user_signed_in?
+      @request.user = current_user
+    else
+      @request.user = User.find_by(email: "default.user@watodo.bug")
+    end
+
     if @request.save!
       AskaiJob.perform_now(@request)
       redirect_to request_path(@request)
