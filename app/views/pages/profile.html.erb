@@ -24,11 +24,13 @@
     <% @requests.where(archived: false).each do |request| %>
       <div class="col">
         <div class="card-custom-b shadow-sm h-100 position-relative">
-              <%= link_to  archive_request_path(request), data: { 'turbo-method': :patch}, class: "btn-archive position-absolute top-0 end-0 m-2" do %>
+
+          <div class="card-body-y d-flex flex-column justify-content-between flex-fill p-3">
+            <h6 class="card-title d-flex justify-content-between"><b><%= request.created_at.strftime(" %Y : %a %e %b ") %></b>
+              <%= link_to  archive_request_path(request), data: { 'turbo-method': :patch}, class: "btn-archive" do %>
                 <i class="fa-solid fa-xmark"></i>
               <% end %>
-          <div class="card-body-y d-flex flex-column justify-content-between p-3">
-            <h6 class="card-title"><b><%= request.created_at.strftime(" %Y : %a %e %b ") %></b></h6>
+            </h6>
             <p class="card-text">
               <%= request.format_duration %><br>
               <b><%= request.address %> </b>
@@ -46,7 +48,7 @@
         <% if activity.done %>
           <div class="col">
             <div class="card-custom-c shadow-sm h-100">
-              <div class="card-body-y d-flex flex-column justify-content-between p-3">
+              <div class="card-body-y d-flex flex-column justify-content-between flex-fill p-3">
                 <h6 class="card-title"><b><%= activity.created_at.strftime(" %Y : %a %e %b ") %></b></h6>
                 <h5 class="card-subtitle mb-2"> <%= activity.name %></h5>
                 <p class="card-text">
