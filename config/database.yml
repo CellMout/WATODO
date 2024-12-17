@@ -81,7 +81,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: <%= ENV['DATABASE_NAME'] %>
+    database: <%= ENV['DATABASE_URL'] %>
     username: watodo
     password: <%= ENV["WATODO_DATABASE_PASSWORD"] %>
   cache:
