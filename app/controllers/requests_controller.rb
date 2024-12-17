@@ -50,6 +50,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:hours, :minutes, :latitude, :longitude, :archieved)
+    params.require(:request).permit(:hours, :minutes, :latitude, :longitude, :archived)
   end
 end
