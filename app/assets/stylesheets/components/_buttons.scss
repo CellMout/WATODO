@@ -17,3 +17,14 @@
   padding: 8px 16px;
   box-shadow: 0 0 5px 2px $un;
 }
+.btn-archive {
+  color: $quatre;
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.btn-archive i:active {
+  color: $cinq;
+  text-shadow: $un 0px 0px 10px;
+  transition: 0.3s;
+}

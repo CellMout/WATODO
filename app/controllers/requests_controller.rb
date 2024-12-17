@@ -35,6 +35,11 @@ class RequestsController < ApplicationController
       }
     end
   end
+  def archive
+    @request = Request.find(params[:id])
+    @request.update(archived: true)  # Assure-toi d'avoir un attribut "archived" dans ta base de données
+    redirect_to profile_path
+  end
 
   def edit
   end
@@ -44,8 +49,7 @@ class RequestsController < ApplicationController
 
   private
 
-
   def request_params
-    params.require(:request).permit(:hours, :minutes, :latitude, :longitude)
+    params.require(:request).permit(:hours, :minutes, :latitude, :longitude, :archived)
   end
 end

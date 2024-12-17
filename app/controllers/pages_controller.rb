@@ -4,4 +4,3 @@ class PagesController < ApplicationController
     @requests = Request.where(user_id: @user.id)
   end
 end
-

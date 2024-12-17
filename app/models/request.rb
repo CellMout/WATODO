@@ -1,7 +1,6 @@
 class Request < ApplicationRecord
   belongs_to :user
   has_many :activities
-
   validates :duration, :lat, :lon, presence: true
   validates :duration, numericality: { only_integer: true, greater_than: 0 }
 
