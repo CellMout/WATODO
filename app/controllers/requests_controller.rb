@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
       AskaiJob.perform_now(@request)
       redirect_to request_path(@request)
     else
-      render :new, status: :unprocessable_entity, alert: "Error: can't process your request"
+      render :new, status: :unprocessable_entity, alert: "Error can't process your request"
     end
   end
 
