@@ -11,4 +11,4 @@
 //= link controllers/loading_controller.js
 //= link application.css
 //= link controllers/scrolling_controller.js
-//= link manifest.json
+//= link manifest.json.erb
