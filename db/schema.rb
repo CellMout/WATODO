@@ -36,8 +36,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_133341) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "archived", default: false
     t.string "address"
+    t.boolean "archived", default: false
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
