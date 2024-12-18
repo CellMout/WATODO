@@ -19,3 +19,20 @@
   border: $cinq;
   margin-top: 2px;
 }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-custom-b,
+.card-custom-c {
+  animation: fadeInUp 0.3s ease-in-out;
+  animation-fill-mode: both;
+  opacity: 0;
+}
