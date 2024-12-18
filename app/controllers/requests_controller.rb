@@ -11,11 +11,12 @@ class RequestsController < ApplicationController
       @request.user = User.find_by(email: "default.user@watodo.bug")
     end
 
-    if @request.save!
+    if @request.save
       AskaiJob.perform_now(@request)
       redirect_to request_path(@request)
     else
-      render :new, status: :unprocessable_entity, alert: "Error can't process your request"
+      flash[:alert] = "Check your location sharing settings"
+      render :new, status: :unprocessable_entity
     end
   end
 
