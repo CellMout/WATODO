@@ -35,12 +35,7 @@ class Request < ApplicationRecord
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o-mini",
       response_format: { type: "json_object" },
-      messages: [ { role: "user", content: "The current time is #{Time.now.strftime("%H:%M")}. Suggest 5 activities around #{address} that can be done within #{duration} minutes. Respond in JSON format. Each activity should include:
-      - 'title': a short title of the activity,
-      - 'description': a short description of the activity,
-      - 'location': a verified and existing address in #{address} city.
-      Only provide locations that are landmarks, public places, or well-known locations (e.g., parks, museums, libraries). Do not invent addresses."
-      } ],
+      messages: [ { role: "user", content: "the time is #{Time.now.strftime("%H:%M")}, Suggest 5 activities to do arround #{address}, that can be done in #{duration} minutes. Respond in json each activity should have a title a description and a location" } ],
       temperature: 0.7
     })
 
