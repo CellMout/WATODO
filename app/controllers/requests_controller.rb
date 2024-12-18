@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
       AskaiJob.perform_now(@request)
       redirect_to request_path(@request)
     else
-      flash[:alert] = "Check your location sharing settings"
+      flash[:alert] = "Location permission must be on and you have to set a time frame"
       render :new, status: :unprocessable_entity
     end
   end
