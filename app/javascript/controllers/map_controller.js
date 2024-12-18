@@ -15,7 +15,6 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
     this.#addMarkersToMap()
-    this.#fitMapToMarkers()
     setTimeout(() => {this.#fitMapToMarkers()}, 1000)
   }
 
