@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(duration: (params[:request][:hours].to_i * 60 + params[:request][:minutes].to_i), lat: params[:request][:latitude], lon: params[:request][:longitude])
+    @request = Request.new(duration: (request_params[:hours].to_i * 60 + request_params[:minutes].to_i), lat: request_params[:latitude], lon: request_params[:longitude])
     if user_signed_in?
       @request.user = current_user
     else
@@ -56,6 +56,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:hours, :minutes, :latitude, :longitude, :archived)
+    params.require(:request).permit(:hours, :minutes, :latitude, :longitude)
   end
 end
