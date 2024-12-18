@@ -27,15 +27,15 @@ class Request < ApplicationRecord
   #   result = request.safe_location
   # end
 
-  private
+  # private
 
   def response
-    location = Geocoder.address([ lat, lon ])
+    # location = Geocoder.address([ lat, lon ])
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o-mini",
       response_format: { type: "json_object" },
-      messages: [ { role: "user", content: "Suggest 5 activities to do arround #{location}, that can be done in #{duration} minutes. Respond in json each activity should have a title a description and a location" } ],
+      messages: [ { role: "user", content: "the time is #{Time.now.strftime("%H:%M")}, Suggest 5 activities to do arround #{address}, that can be done in #{duration} minutes. Respond in json each activity should have a title a description and a location" } ],
       temperature: 0.7
     })
 
