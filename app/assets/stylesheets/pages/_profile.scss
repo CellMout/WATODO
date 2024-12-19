@@ -10,7 +10,6 @@
     border-radius: 20px;
     border: $cinq;
     margin-top: 2px;
-
   }
 .card-custom-c {
   display: flex;
@@ -19,20 +18,19 @@
   border: $cinq;
   margin-top: 2px;
 }
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
+@keyframes example {
+  0% {
     transform: translateY(20px);
+    opacity: 0;
   }
-  to {
-    opacity: 1;
+  100% {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
 .card-custom-b,
 .card-custom-c {
-  animation: fadeInUp 0.3s ease-in-out;
+  animation: 0.3s example 0.3s ease-in-out;
   animation-fill-mode: both;
-  opacity: 0;
 }
