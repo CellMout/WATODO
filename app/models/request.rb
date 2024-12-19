@@ -11,7 +11,7 @@ class Request < ApplicationRecord
     response["activities"].each do |activity|
       loc = activity["location"]
       # loc = activity["location"] if activity["location"].split(",").count == 3
-      # loc = activity["location"].split(",").drop(1).join(",") if activity["location"].split(",").count == 4
+      loc = activity["location"].split(",").drop(1).join(",") if activity["location"].split(",").count == 4
       # loc = activity["location"].split(",")[2..3].unshift(activity["location"].split(",").first).join(",") if activity["location"].split(",").count == 4
       acti = Activity.new(name: activity["title"], description: activity["description"], location: loc)
       acti.request = self
