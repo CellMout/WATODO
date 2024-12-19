@@ -10,6 +10,7 @@ class Request < ApplicationRecord
   def create_activities
     response["activities"].each do |activity|
       loc = activity["location"]
+      loc = "Quartier du Panier, 13002 Marseille, France" if activity["location"].match?(/\b[Pp]anier\b.*\b[Mm]arseille\b|\b[Mm]arseille\b.*\b[Pp]anier\b/)
       # loc = activity["location"] if activity["location"].split(",").count == 3
       loc = activity["location"].split(",").drop(1).join(",") if activity["location"].split(",").count == 4
       # loc = activity["location"].split(",")[2..3].unshift(activity["location"].split(",").first).join(",") if activity["location"].split(",").count == 4
