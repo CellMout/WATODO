@@ -9,9 +9,11 @@ class Request < ApplicationRecord
 
   def create_activities
     response["activities"].each do |activity|
+      loc = activity["location"]
       # loc = activity["location"] if activity["location"].split(",").count == 3
       # loc = activity["location"].split(",").drop(1).join(",") if activity["location"].split(",").count == 4
-      acti = Activity.new(name: activity["title"], description: activity["description"], location: activity["location"])
+      # loc = activity["location"].split(",")[2..3].unshift(activity["location"].split(",").first).join(",") if activity["location"].split(",").count == 4
+      acti = Activity.new(name: activity["title"], description: activity["description"], location: loc)
       acti.request = self
       acti.save!
     end
@@ -33,15 +35,10 @@ class Request < ApplicationRecord
     # location = Geocoder.address([ lat, lon ])
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       response_format: { type: "json_object" },
-      messages: [ { role: "user", content: "The current time is #{Time.now.strftime("%H:%M")}. Suggest 5 activities around #{address} that can be done within #{duration} minutes. Respond in JSON format. Each activity should include:
-      - 'title': a short title of the activity,
-      - 'description': a short description of the activity,
-      - 'location': a verified and existing address in #{address} city.
-      Only provide locations that are landmarks, public places, or well-known locations (e.g., parks, museums, libraries). Do not invent addresses."
-      } ],
-      temperature: 0.7
+      messages: [ { role: "user", content: "We are #{Date.today} and the time is #{Time.now.strftime("%H:%M")}. Suggest 5 seasonal activities around #{address} that can fill my #{duration} minutes time span. Respond in JSON format. Each activity should include: title, description and location. Location has to be an address" } ],
+      temperature: 0.2
     })
 
     json_content = chatgpt_response.dig("choices", 0, "message", "content")

@@ -1,4 +1,5 @@
 <div class="banner-watodo"  data-controller="loading" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= image_path("8ce5289c-75da-4b14-9c63-2a623d1cdaef.jpg") %>');">
+  <div class="overlay" data-loading-target="overlay"></div>
   <div class="navbar-custom d-flex justify-content-between">
     <% if user_signed_in? %>
       <%= link_to profile_path class: "profile-link" do %>
@@ -25,7 +26,7 @@
         <p>your surroundings</p>
       </h2>
     </div>
-    <img class="d-none" data-loading-target="loading" src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif" alt="" style="width: 100px; height: 100px; margin-top: 5vh;">
+    <img class="d-none" data-loading-target="loading" src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif" alt="" style="width: 100px; height: 100px; margin-top: 5vh; z-index:100; position: relative;">
   </div>
 
   <div class="form-overlay">
